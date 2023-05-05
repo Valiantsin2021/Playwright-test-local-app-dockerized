@@ -3,7 +3,7 @@
 To setup:
 1.  ```npm i```
 2.  ```docker build -t <desired image name> .```
-3.  ```docker run -it --rm --name <desired container name> -p 3000:3000 <docker image name from previous step> npm test```
+3.  ```docker run -it --rm --name <desired container name> -v ${pwd}/allure-report:/app/allure-report -p 3000:3000 <docker image name from previous step> npm test```
 ## Small print
 
 Authorof the TodoMVC: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2022
