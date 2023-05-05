@@ -7,7 +7,18 @@ module.exports = defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [['html', { open: 'never' }]],
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    [
+      'allure-playwright',
+      {
+        detail: true,
+        outputFolder: 'allure-results',
+        suiteTitle: true,
+      },
+    ],
+  ],
   use: {
     testIdAttribute: 'data-cy',
     baseURL: 'http://localhost:3000/',
