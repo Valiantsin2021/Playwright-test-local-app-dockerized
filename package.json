@@ -1,0 +1,34 @@
+{
+  "name": "test-todomvc-using-app-actions",
+  "version": "1.0.0",
+  "description": "Example Cypress tests going from page objects to app actions",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run reset",
+    "start": "node ./server",
+    "poststart": "npm run reset",
+    "reset": "node reset-db.js",
+    "lint": "tsc --noEmit --pretty",
+    "test": "npx playwright test --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/test-todomvc-using-app-actions.git"
+  },
+  "keywords": [],
+  "author": "Valentin Lutchanka",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@playwright/test": "^1.33.0",
+    "prettier": "2.8.8"
+  },
+  "dependencies": {
+    "json-server": "0.17.1",
+    "json-server-reset": "1.4.0"
+  }
+}
