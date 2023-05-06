@@ -4,6 +4,7 @@
   "description": "Example Cypress tests going from page objects to app actions",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm install -D npm-check-updates && npx npm-check-updates -u",
     "prestart": "npm run reset",
     "start": "node ./server",
     "poststart": "npm run reset",
