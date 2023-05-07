@@ -4,14 +4,14 @@
   "description": "Example Cypress tests going from page objects to app actions",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install -D npm-check-updates && npx npm-check-updates -u",
+    "update": "npm install -D npm-check-updates && npx npm-check-updates -u",
     "prestart": "npm run reset",
     "start": "node ./server",
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
     "lint": "tsc --noEmit --pretty",
     "test": "npx playwright test",
-    "posttest": "allure generate allure-results -o allure-report --clean"
+    "report": "allure generate allure-results -o allure-report --clean"
   },
   "repository": {
     "type": "git",
