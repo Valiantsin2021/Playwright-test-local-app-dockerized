@@ -20,6 +20,7 @@ module.exports = defineConfig({
     ],
   ],
   use: {
+    headless: true,
     testIdAttribute: 'data-cy',
     baseURL: 'http://localhost:3000/',
     trace: 'on-first-retry',
