@@ -1,7 +1,7 @@
 {
-  "name": "test-todomvc-using-app-actions",
+  "name": "test-todomvc",
   "version": "1.0.0",
-  "description": "Example Cypress tests going from page objects to app actions",
+  "description": "Example Playwright tests",
   "main": "index.js",
   "scripts": {
     "update": "npm install -D npm-check-updates && npx npm-check-updates -u",
@@ -9,13 +9,12 @@
     "start": "node ./server",
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
-    "lint": "tsc --noEmit --pretty",
     "test": "npx playwright test",
     "report": "allure generate allure-results -o allure-report --clean"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/test-todomvc-using-app-actions.git"
+    "url": ""
   },
   "keywords": [],
   "author": "Valentin Lutchanka",
