@@ -10,7 +10,7 @@
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
     "test": "npx playwright test",
-    "posttest": "npx allure generate allure-results -o allure-report --clean"
+    "posttest": "allure generate allure-results -o allure-report --clean"
   },
   "repository": {
     "type": "git",
