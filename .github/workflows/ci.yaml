@@ -17,7 +17,7 @@ jobs:
         run: docker build -t test-image:latest -f Dockerfile_minified_ub_node .
       # run application Docker image
       - name: Run tests in a container (application)
-        run: docker run -i --rm --name test -v ${pwd}/allure-report:/app/allure-report -p 3000:3000 test-image:latest npm test
+        run: docker run -i --rm --name test -v ${pwd}/allure-report:/app/allure-report -p 3000:3000 test-image:latest npm test && npm run posttest
       - uses: actions/upload-artifact@v3
         if: always()
         with:
