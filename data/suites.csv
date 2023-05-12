@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri May 12 19:46:03 GMT 2023","Fri May 12 19:46:04 GMT 2023","865","Test todo app","demo-todo-app.spec.js","New Todo","","","should allow me to add todo items",""
