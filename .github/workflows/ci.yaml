@@ -1,0 +1,32 @@
+name: Test local app in a docker container (Playwright)
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout application code
+      - name: Checkout project
+        uses: actions/checkout@v3
+      # build application Docker image
+      - name: Build image (application)
+        run: docker build -t test-image:latest -f Dockerfile_minified_ub_node .
+      # run application Docker image
+      - name: Run tests in a container (application)
+        run: docker run -i --rm --name test -v /allure-report:/app/allure-report -p 3000:3000 test-image:latest npm test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-report
+          path: /allure-report
+          retention-days: 30
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /allure-report
