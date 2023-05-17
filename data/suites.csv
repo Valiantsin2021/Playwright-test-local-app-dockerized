@@ -1,2 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed May 17 19:31:09 GMT 2023","Wed May 17 19:31:10 GMT 2023","1047","Test todo app","demo-todo-app.spec.js","New Todo","","","should allow me to add todo items",""
+"passed","Wed May 17 21:45:49 GMT 2023","Wed May 17 21:45:50 GMT 2023","576","Test todo app","2-demo-todo-app.spec.js","New Todo","","","should allow me to add todo items",""
+"passed","Wed May 17 21:45:48 GMT 2023","Wed May 17 21:45:49 GMT 2023","1068","Test todo app","1-requests-todo-app.spec.js","New Todo via requests","","","should allow me to add todo itemsvia API",""

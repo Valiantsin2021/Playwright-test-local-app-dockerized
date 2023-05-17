@@ -1,1 +1,1 @@
-[{"uid":"29a1353cef7d15aa","name":"should allow me to add todo items","time":{"start":1684351869220,"stop":1684351870267,"duration":1047},"status":"passed","severity":"normal"}]
+[{"uid":"f7118468d5a8a7f7","name":"should allow me to add todo items","time":{"start":1684359949744,"stop":1684359950320,"duration":576},"status":"passed","severity":"normal"},{"uid":"e7b47c0a472e6a0f","name":"should allow me to add todo itemsvia API","time":{"start":1684359948670,"stop":1684359949738,"duration":1068},"status":"passed","severity":"normal"}]
