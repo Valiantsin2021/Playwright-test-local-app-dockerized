@@ -6,8 +6,4 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN apt-get update && \
-    apt-get install zip
-WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install
-COPY . /app
+    apt-get -y install zip

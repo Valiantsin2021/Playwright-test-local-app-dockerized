@@ -11,7 +11,7 @@
     "reset": "node reset-db.js",
     "lint": "tsc --noEmit --pretty",
     "test": "npx playwright test",
-    "report": "allure generate allure-results -o allure-report --clean"
+    "posttest": "allure generate allure-results -o allure-report --clean"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "homepage": "",
   "devDependencies": {
-    "@playwright/test": "^1.33.0",
+    "@playwright/test": "1.32.3",
     "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
     "playwright": "^1.33.0",
