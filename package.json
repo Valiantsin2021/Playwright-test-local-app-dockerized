@@ -10,7 +10,7 @@
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
     "test": "npx playwright test",
-    "lint": "eslint ./**/*.js --fix",
+    "lint": "eslint ./**/*.{js,jsx} --fix",
     "format": "prettier --write .",
     "posttest": "allure generate allure-results -o allure-report --clean"
   },
