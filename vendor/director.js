@@ -12,7 +12,7 @@
    *
    */
 
-  var dloc = document.location
+  let dloc = document.location
 
   function dlocHashEmpty() {
     // Non-IE browsers return '' when the address bar shows '#'; Director's logic
@@ -20,13 +20,13 @@
     return dloc.hash === '' || dloc.hash === '#'
   }
 
-  var listener = {
+  let listener = {
     mode: 'modern',
     hash: dloc.hash,
     history: false,
 
     check: function () {
-      var h = dloc.hash
+      let h = dloc.hash
       if (h != this.hash) {
         this.hash = h
         this.onHashChanged()
@@ -42,7 +42,7 @@
     },
 
     init: function (fn, history) {
-      var self = this
+      let self = this
       this.history = history
 
       if (!Router.listeners) {
@@ -50,16 +50,13 @@
       }
 
       function onchange(onChangeEvent) {
-        for (var i = 0, l = Router.listeners.length; i < l; i++) {
+        for (let i = 0, l = Router.listeners.length; i < l; i++) {
           Router.listeners[i](onChangeEvent)
         }
       }
 
       //note IE8 is being counted as 'modern' because it has the hashchange event
-      if (
-        'onhashchange' in window &&
-        (document.documentMode === undefined || document.documentMode > 7)
-      ) {
+      if ('onhashchange' in window && (document.documentMode === undefined || document.documentMode > 7)) {
         // At least for now HTML5 history is available for 'modern' browsers only
         if (this.history === true) {
           // There is an old bug in Chrome that causes onpopstate to fire even
@@ -78,7 +75,7 @@
         //
         // IE support, based on a concept by Erik Arvidson ...
         //
-        var frame = document.createElement('iframe')
+        let frame = document.createElement('iframe')
         frame.id = 'state-frame'
         frame.style.display = 'none'
         document.body.appendChild(frame)
@@ -110,9 +107,9 @@
         return
       }
 
-      var listeners = Router.listeners
+      let listeners = Router.listeners
 
-      for (var i = listeners.length - 1; i >= 0; i--) {
+      for (let i = listeners.length - 1; i >= 0; i--) {
         if (listeners[i] === fn) {
           listeners.splice(i, 1)
         }
@@ -138,20 +135,16 @@
 
     writeFrame: function (s) {
       // IE support...
-      var f = document.getElementById('state-frame')
-      var d = f.contentDocument || f.contentWindow.document
+      let f = document.getElementById('state-frame')
+      let d = f.contentDocument || f.contentWindow.document
       d.open()
-      d.write(
-        "<script>_hash = '" +
-          s +
-          "'; onload = parent.listener.syncHash;<script>"
-      )
+      d.write("<script>_hash = '" + s + "'; onload = parent.listener.syncHash;<script>")
       d.close()
     },
 
     syncHash: function () {
       // IE support...
-      var s = this._hash
+      let s = this._hash
       if (s != dloc.hash) {
         dloc.hash = s
       }
@@ -173,21 +166,18 @@
     this._insert = this.insert
     this.insert = this.insertEx
 
-    this.historySupport =
-      (window.history != null ? window.history.pushState : null) != null
+    this.historySupport = (window.history != null ? window.history.pushState : null) != null
 
     this.configure()
     this.mount(routes || {})
   })
 
   Router.prototype.init = function (r) {
-    var self = this,
+    let self = this,
       routeTo
     this.handler = function (onChangeEvent) {
-      var newURL =
-        (onChangeEvent && onChangeEvent.newURL) || window.location.hash
-      var url =
-        self.history === true ? self.getPath() : newURL.replace(/.*#/, '')
+      let newURL = (onChangeEvent && onChangeEvent.newURL) || window.location.hash
+      let url = self.history === true ? self.getPath() : newURL.replace(/.*#/, '')
       self.dispatch('on', url.charAt(0) === '/' ? url : '/' + url)
     }
 
@@ -202,12 +192,7 @@
     } else {
       if (this.convert_hash_in_init) {
         // Use hash as route
-        routeTo =
-          dlocHashEmpty() && r
-            ? r
-            : !dlocHashEmpty()
-            ? dloc.hash.replace(/^#/, '')
-            : null
+        routeTo = dlocHashEmpty() && r ? r : !dlocHashEmpty() ? dloc.hash.replace(/^#/, '') : null
         if (routeTo) {
           window.history.replaceState({}, document.title, routeTo)
         }
@@ -227,7 +212,7 @@
   }
 
   Router.prototype.explode = function () {
-    var v = this.history === true ? this.getPath() : dloc.hash
+    let v = this.history === true ? this.getPath() : dloc.hash
     if (v.charAt(1) === '/') {
       v = v.slice(1)
     }
@@ -235,7 +220,7 @@
   }
 
   Router.prototype.setRoute = function (i, v, val) {
-    var url = this.explode()
+    let url = this.explode()
 
     if (typeof i === 'number' && typeof v === 'string') {
       url[i] = v
@@ -261,7 +246,7 @@
     if (method === 'once') {
       method = 'on'
       route = (function (route) {
-        var once = false
+        let once = false
         return function () {
           if (once) return
           once = true
@@ -273,12 +258,12 @@
   }
 
   Router.prototype.getRoute = function (v) {
-    var ret = v
+    let ret = v
 
     if (typeof v === 'number') {
       ret = this.explode()[v]
     } else if (typeof v === 'string') {
-      var h = this.explode()
+      let h = this.explode()
       ret = h.indexOf(v)
     } else {
       ret = this.explode()
@@ -293,14 +278,14 @@
   }
 
   Router.prototype.getPath = function () {
-    var path = window.location.pathname
+    let path = window.location.pathname
     if (path.substr(0, 1) !== '/') {
       path = '/' + path
     }
     return path
   }
   function _every(arr, iterator) {
-    for (var i = 0; i < arr.length; i += 1) {
+    for (let i = 0; i < arr.length; i += 1) {
       if (iterator(arr[i], i, arr) === false) {
         return
       }
@@ -308,8 +293,8 @@
   }
 
   function _flatten(arr) {
-    var flat = []
-    for (var i = 0, n = arr.length; i < n; i++) {
+    let flat = []
+    for (let i = 0, n = arr.length; i < n; i++) {
       flat = flat.concat(arr[i])
     }
     return flat
@@ -319,7 +304,7 @@
     if (!arr.length) {
       return callback()
     }
-    var completed = 0
+    let completed = 0
     ;(function iterate() {
       iterator(arr[completed], function (err) {
         if (err || err === false) {
@@ -339,7 +324,7 @@
 
   function paramifyString(str, params, mod) {
     mod = str
-    for (var param in params) {
+    for (let param in params) {
       if (params.hasOwnProperty(param)) {
         mod = params[param](str)
         if (mod !== str) {
@@ -351,23 +336,21 @@
   }
 
   function regifyString(str, params) {
-    var matches,
+    let matches,
       last = 0,
       out = ''
-    while (
-      (matches = str.substr(last).match(/[^\w\d\- %@&]*\*[^\w\d\- %@&]*/))
-    ) {
+    while ((matches = str.substr(last).match(/[^\w\d\- %@&]*\*[^\w\d\- %@&]*/))) {
       last = matches.index + matches[0].length
       matches[0] = matches[0].replace(/^\*/, '([_.()!\\ %@&a-zA-Z0-9-]+)')
       out += str.substr(0, matches.index) + matches[0]
     }
     str = out += str.substr(last)
-    var captures = str.match(/:([^\/]+)/gi),
+    let captures = str.match(/:([^\/]+)/gi),
       capture,
       length
     if (captures) {
       length = captures.length
-      for (var i = 0; i < length; i++) {
+      for (let i = 0; i < length; i++) {
         capture = captures[i]
         if (capture.slice(0, 2) === '::') {
           str = capture.slice(1)
@@ -387,7 +370,7 @@
       stop = (stop || ')').toString(),
       i
     for (i = 0; i < routes.length; i++) {
-      var chunk = routes[i]
+      let chunk = routes[i]
       if (
         chunk.indexOf(start, last) > chunk.indexOf(stop, last) ||
         (~chunk.indexOf(start, last) && !~chunk.indexOf(stop, last)) ||
@@ -396,7 +379,7 @@
         left = chunk.indexOf(start, last)
         right = chunk.indexOf(stop, last)
         if ((~left && !~right) || (!~left && ~right)) {
-          var tmp = routes.slice(0, (i || 1) + 1).join(delimiter)
+          let tmp = routes.slice(0, (i || 1) + 1).join(delimiter)
           routes = [tmp].concat(routes.slice((i || 1) + 1))
         }
         last = (right > left ? right : left) + 1
@@ -408,11 +391,11 @@
     return routes
   }
 
-  var QUERY_SEPARATOR = /\?.*/
+  let QUERY_SEPARATOR = /\?.*/
 
   Router.prototype.configure = function (options) {
     options = options || {}
-    for (var i = 0; i < this.methods.length; i++) {
+    for (let i = 0; i < this.methods.length; i++) {
       this._methods[this.methods[i]] = true
     }
     this.recurse = options.recurse || this.recurse || false
@@ -422,10 +405,8 @@
     this.notfound = options.notfound
     this.resource = options.resource
     this.history = (options.html5history && this.historySupport) || false
-    this.run_in_init =
-      this.history === true && options.run_handler_in_init !== false
-    this.convert_hash_in_init =
-      this.history === true && options.convert_hash_in_init !== false
+    this.run_in_init = this.history === true && options.run_handler_in_init !== false
+    this.convert_hash_in_init = this.history === true && options.convert_hash_in_init !== false
     this.every = {
       after: options.after || null,
       before: options.before || null,
@@ -438,19 +419,15 @@
     if (token[0] !== ':') {
       token = ':' + token
     }
-    var compiled = new RegExp(token, 'g')
+    let compiled = new RegExp(token, 'g')
     this.params[token] = function (str) {
       return str.replace(compiled, matcher.source || matcher)
     }
     return this
   }
 
-  Router.prototype.on = Router.prototype.route = function (
-    method,
-    path,
-    route
-  ) {
-    var self = this
+  Router.prototype.on = Router.prototype.route = function (method, path, route) {
+    let self = this
     if (!route && typeof path == 'function') {
       route = path
       path = method
@@ -475,7 +452,7 @@
   }
 
   Router.prototype.path = function (path, routesFn) {
-    var self = this,
+    let self = this,
       length = this.scope.length
     if (path.source) {
       path = path.source.replace(/\\\//gi, '/')
@@ -488,13 +465,8 @@
   }
 
   Router.prototype.dispatch = function (method, path, callback) {
-    var self = this,
-      fns = this.traverse(
-        method,
-        path.replace(QUERY_SEPARATOR, ''),
-        this.routes,
-        ''
-      ),
+    let self = this,
+      fns = this.traverse(method, path.replace(QUERY_SEPARATOR, ''), this.routes, ''),
       invoked = this._invoked,
       after
     this._invoked = true
@@ -519,10 +491,7 @@
       self.last = fns.after
       self.invoke(self.runlist(fns), self, callback)
     }
-    after =
-      this.every && this.every.after
-        ? [this.every.after].concat(this.last)
-        : [this.last]
+    after = this.every && this.every.after ? [this.every.after].concat(this.last) : [this.last]
     if (after && after.length > 0 && invoked) {
       if (this.async) {
         this.invoke(after, this, updateAndInvoke)
@@ -537,8 +506,8 @@
   }
 
   Router.prototype.invoke = function (fns, thisArg, callback) {
-    var self = this
-    var apply
+    let self = this
+    let apply
     if (this.async) {
       apply = function (fn, next) {
         if (Array.isArray(fn)) {
@@ -567,7 +536,7 @@
   }
 
   Router.prototype.traverse = function (method, path, routes, regexp, filter) {
-    var fns = [],
+    let fns = [],
       current,
       exact,
       match,
@@ -578,14 +547,14 @@
         return routes
       }
       function deepCopy(source) {
-        var result = []
-        for (var i = 0; i < source.length; i++) {
+        let result = []
+        for (let i = 0; i < source.length; i++) {
           result[i] = Array.isArray(source[i]) ? deepCopy(source[i]) : source[i]
         }
         return result
       }
       function applyFilter(fns) {
-        for (var i = fns.length - 1; i >= 0; i--) {
+        for (let i = fns.length - 1; i >= 0; i--) {
           if (Array.isArray(fns[i])) {
             applyFilter(fns[i])
             if (fns[i].length === 0) {
@@ -598,7 +567,7 @@
           }
         }
       }
-      var newRoutes = deepCopy(routes)
+      let newRoutes = deepCopy(routes)
       newRoutes.matched = routes.matched
       newRoutes.captures = routes.captures
       newRoutes.after = routes.after.filter(filter)
@@ -612,13 +581,10 @@
       next.captures = []
       return filterRoutes(next)
     }
-    for (var r in routes) {
+    for (let r in routes) {
       if (
         routes.hasOwnProperty(r) &&
-        (!this._methods[r] ||
-          (this._methods[r] &&
-            typeof routes[r] === 'object' &&
-            !Array.isArray(routes[r])))
+        (!this._methods[r] || (this._methods[r] && typeof routes[r] === 'object' && !Array.isArray(routes[r])))
       ) {
         current = exact = regexp + this.delimiter + r
         if (!this.strict) {
@@ -663,7 +629,7 @@
   }
 
   Router.prototype.insert = function (method, path, route, parent) {
-    var methodType, parentType, isArray, nested, part
+    let methodType, parentType, isArray, nested, part
     path = path.filter(function (p) {
       return p && p.length > 0
     })
@@ -716,13 +682,13 @@
   }
 
   Router.prototype.extend = function (methods) {
-    var self = this,
+    let self = this,
       len = methods.length,
       i
     function extend(method) {
       self._methods[method] = true
       self[method] = function () {
-        var extra = arguments.length === 1 ? [method, ''] : [method]
+        let extra = arguments.length === 1 ? [method, ''] : [method]
         self.on.apply(self, extra.concat(Array.prototype.slice.call(arguments)))
       }
     }
@@ -732,10 +698,7 @@
   }
 
   Router.prototype.runlist = function (fns) {
-    var runlist =
-      this.every && this.every.before
-        ? [this.every.before].concat(_flatten(fns))
-        : _flatten(fns)
+    let runlist = this.every && this.every.before ? [this.every.before].concat(_flatten(fns)) : _flatten(fns)
     if (this.every && this.every.on) {
       runlist.push(this.every.on)
     }
@@ -748,21 +711,19 @@
     if (!routes || typeof routes !== 'object' || Array.isArray(routes)) {
       return
     }
-    var self = this
+    let self = this
     path = path || []
     if (!Array.isArray(path)) {
       path = path.split(self.delimiter)
     }
     function insertOrMount(route, local) {
-      var rename = route,
+      let rename = route,
         parts = route.split(self.delimiter),
         routeType = typeof routes[route],
         isRoute = parts[0] === '' || !self._methods[parts[0]],
         event = isRoute ? 'on' : rename
       if (isRoute) {
-        rename = rename.slice(
-          (rename.match(new RegExp('^' + self.delimiter)) || [''])[0].length
-        )
+        rename = rename.slice((rename.match(new RegExp('^' + self.delimiter)) || [''])[0].length)
         parts.shift()
       }
       if (isRoute && routeType === 'object' && !Array.isArray(routes[route])) {
@@ -776,7 +737,7 @@
       }
       self.insert(event, local, routes[route])
     }
-    for (var route in routes) {
+    for (let route in routes) {
       if (routes.hasOwnProperty(route)) {
         insertOrMount(route, path.slice(0))
       }

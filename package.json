@@ -10,8 +10,14 @@
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
     "test": "npx playwright test",
+    "lint": "eslint ./**/*.js --fix",
+    "format": "prettier --write .",
     "posttest": "allure generate allure-results -o allure-report --clean"
   },
+  "precommit": [
+    "format",
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": ""
@@ -29,6 +35,11 @@
     "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
     "playwright": "^1.33.0",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-playwright": "^0.12.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "pre-commit": "^1.2.2",
     "prettier": "2.8.8"
   },
   "dependencies": {

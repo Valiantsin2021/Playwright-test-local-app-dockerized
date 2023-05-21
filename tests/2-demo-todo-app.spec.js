@@ -5,11 +5,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('./')
 })
 
-const TODO_ITEMS = [
-  'buy some cheese',
-  'feed the cat',
-  'book a doctors appointment',
-]
+const TODO_ITEMS = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
 
 test.describe('New Todo', () => {
   test('should allow me to add todo items', async ({ page }) => {
@@ -28,20 +24,13 @@ test.describe('New Todo', () => {
     await newTodo.press('Enter')
 
     // Make sure the list now has two todo items.
-    await expect(page.locator('.todo')).toHaveText([
-      TODO_ITEMS[0],
-      TODO_ITEMS[1],
-    ])
+    await expect(page.locator('.todo')).toHaveText([TODO_ITEMS[0], TODO_ITEMS[1]])
 
     // Create 3d todo.
     await newTodo.fill(TODO_ITEMS[2])
     await newTodo.press('Enter')
 
-    await expect(page.locator('.todo')).toHaveText([
-      TODO_ITEMS[0],
-      TODO_ITEMS[1],
-      TODO_ITEMS[2],
-    ])
+    await expect(page.locator('.todo')).toHaveText([TODO_ITEMS[0], TODO_ITEMS[1], TODO_ITEMS[2]])
 
     await expect(page.getByTestId('remaining-count')).toHaveText('3')
 
@@ -56,9 +45,6 @@ test.describe('New Todo', () => {
     await expect(page.locator('.todo')).toHaveCount(3)
     await page.locator('.destroy').nth(1).click()
     await expect(page.locator('.todo')).toHaveCount(2)
-    await expect(page.locator('.todo')).toHaveText([
-      TODO_ITEMS[0],
-      TODO_ITEMS[2],
-    ])
+    await expect(page.locator('.todo')).toHaveText([TODO_ITEMS[0], TODO_ITEMS[2]])
   })
 })

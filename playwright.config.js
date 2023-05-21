@@ -15,25 +15,25 @@ module.exports = defineConfig({
       {
         detail: true,
         outputFolder: 'allure-results',
-        suiteTitle: true,
-      },
-    ],
+        suiteTitle: true
+      }
+    ]
   ],
   use: {
     headless: true,
     testIdAttribute: 'data-cy',
     baseURL: 'http://localhost:3000/',
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
   projects: [
     {
       name: 'Test todo app',
-      use: { ...devices['Desktop Chrome'] },
-    },
+      use: { ...devices['Desktop Chrome'] }
+    }
   ],
   webServer: {
     command: 'npm run start',
     url: 'http://localhost:3000/',
-    reuseExistingServer: !process.env.CI,
-  },
+    reuseExistingServer: !process.env.CI
+  }
 })

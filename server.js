@@ -6,7 +6,7 @@ const router = jsonServer.router('data.json')
 const defaults = jsonServer.defaults({
   static: '.',
   bodyParser: true,
-  readOnly: false,
+  readOnly: false
 })
 
 server.use(defaults)

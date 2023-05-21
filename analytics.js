@@ -1,5 +1,5 @@
 // example analytics lib
-window.track = (eventName) => {
+window.track = eventName => {
   console.log('tracking event "%s"', eventName)
 }
 window.addEventListener('load', () => {

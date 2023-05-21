@@ -3,9 +3,7 @@
 /* eslint-disable-next-line */
 const uri = window.location.search.substring(1)
 const params = new URLSearchParams(uri)
-const appStartDelay = parseFloat(
-  params.get('appStartDelay') || '0',
-)
+const appStartDelay = parseFloat(params.get('appStartDelay') || '0')
 
 function appStart() {
   Vue.use(Vuex)
@@ -25,12 +23,12 @@ function appStart() {
       loading: false,
       todos: [],
       newTodo: '',
-      delay: 0,
+      delay: 0
     },
     getters: {
-      newTodo: (state) => state.newTodo,
-      todos: (state) => state.todos,
-      loading: (state) => state.loading,
+      newTodo: state => state.newTodo,
+      todos: state => state.todos,
+      loading: state => state.loading
     },
     mutations: {
       SET_DELAY(state, delay) {
@@ -67,7 +65,7 @@ function appStart() {
       },
       CLEAR_NEW_TODO(state) {
         state.newTodo = ''
-      },
+      }
     },
     actions: {
       setDelay({ commit }, delay) {
@@ -78,22 +76,19 @@ function appStart() {
       },
 
       loadTodos({ commit, state }) {
-        console.log(
-          'loadTodos start, delay is %d',
-          state.delay,
-        )
+        console.log('loadTodos start, delay is %d', state.delay)
         setTimeout(() => {
           commit('SET_LOADING', true)
 
           axios
             .get('/todos')
-            .then((r) => r.data)
-            .then((todos) => {
+            .then(r => r.data)
+            .then(todos => {
               setTimeout(() => {
                 commit('SET_TODOS', todos)
               }, state.renderDelay)
             })
-            .catch((e) => {
+            .catch(e => {
               console.error('could not load todos')
               console.error(e.message)
               console.error(e.response.data)
@@ -123,7 +118,7 @@ function appStart() {
         const todo = {
           title: state.newTodo,
           completed: false,
-          id: randomId(),
+          id: randomId()
         }
         // artificial delay in the application
         // for test "flaky test - can pass or not depending on the app's speed"
@@ -140,7 +135,7 @@ function appStart() {
       addEntireTodo({ commit }, todoFields) {
         const todo = {
           ...todoFields,
-          id: randomId(),
+          id: randomId()
         }
         axios.post('/todos', todo).then(() => {
           commit('ADD_TODO', todo)
@@ -150,18 +145,14 @@ function appStart() {
         track('todo.remove', todo.title)
 
         axios.delete(`/todos/${todo.id}`).then(() => {
-          console.log(
-            'removed todo',
-            todo.id,
-            'from the server',
-          )
+          console.log('removed todo', todo.id, 'from the server')
           commit('REMOVE_TODO', todo)
         })
       },
       async copyTodos({ state }) {
         const markdown =
           state.todos
-            .map((todo) => {
+            .map(todo => {
               const mark = todo.completed ? 'x' : ' '
               return `- [${mark}] ${todo.title}`
             })
@@ -169,12 +160,8 @@ function appStart() {
         await navigator.clipboard.writeText(markdown)
       },
       async removeCompleted({ commit, state }) {
-        const remainingTodos = state.todos.filter(
-          (todo) => !todo.completed,
-        )
-        const completedTodos = state.todos.filter(
-          (todo) => todo.completed,
-        )
+        const remainingTodos = state.todos.filter(todo => !todo.completed)
+        const completedTodos = state.todos.filter(todo => todo.completed)
 
         for (const todo of completedTodos) {
           await axios.delete(`/todos/${todo.id}`)
@@ -182,9 +169,7 @@ function appStart() {
         commit('SET_TODOS', remainingTodos)
       },
       async sortTodos({ commit, state }) {
-        const sortedTodos = state.todos.sort((a, b) =>
-          a.title.localeCompare(b.title),
-        )
+        const sortedTodos = state.todos.sort((a, b) => a.title.localeCompare(b.title))
         await axios.post('/reset', { todos: sortedTodos })
         commit('SET_TODOS', sortedTodos)
       },
@@ -192,23 +177,20 @@ function appStart() {
         commit('CLEAR_NEW_TODO')
       },
       // example promise-returning action
-      addTodoAfterDelay(
-        { commit },
-        { milliseconds, title },
-      ) {
-        return new Promise((resolve) => {
+      addTodoAfterDelay({ commit }, { milliseconds, title }) {
+        return new Promise(resolve => {
           setTimeout(() => {
             const todo = {
               title,
               completed: false,
-              id: randomId(),
+              id: randomId()
             }
             commit('ADD_TODO', todo)
             resolve()
           }, milliseconds)
         })
-      },
-    },
+      }
+    }
   })
 
   // a few helper utilities
@@ -225,7 +207,7 @@ function appStart() {
       return todos.filter(function (todo) {
         return todo.completed
       })
-    },
+    }
   }
 
   // app Vue instance
@@ -233,28 +215,20 @@ function appStart() {
     store,
     data: {
       file: null,
-      visibility: 'all',
+      visibility: 'all'
     },
     el: '.todoapp',
 
     created() {
       const delay = parseFloat(params.get('delay') || '0')
-      const renderDelay = parseFloat(
-        params.get('renderDelay') || '0',
-      )
-      addTodoDelay = parseFloat(
-        params.get('addTodoDelay') || '0',
-      )
+      const renderDelay = parseFloat(params.get('renderDelay') || '0')
+      addTodoDelay = parseFloat(params.get('addTodoDelay') || '0')
 
-      this.$store
-        .dispatch('setRenderDelay', renderDelay)
-        .then(() => {
-          this.$store
-            .dispatch('setDelay', delay)
-            .then(() => {
-              this.$store.dispatch('loadTodos')
-            })
+      this.$store.dispatch('setRenderDelay', renderDelay).then(() => {
+        this.$store.dispatch('setDelay', delay).then(() => {
+          this.$store.dispatch('loadTodos')
         })
+      })
 
       // how would you test the periodic loading of todos?
       setInterval(() => {
@@ -275,15 +249,11 @@ function appStart() {
         return this.$store.getters.todos
       },
       filteredTodos() {
-        return filters[this.visibility](
-          this.$store.getters.todos,
-        )
+        return filters[this.visibility](this.$store.getters.todos)
       },
       remaining() {
-        return this.$store.getters.todos.filter(
-          (todo) => !todo.completed,
-        ).length
-      },
+        return this.$store.getters.todos.filter(todo => !todo.completed).length
+      }
     },
 
     // methods that implement data logic.
@@ -322,7 +292,7 @@ function appStart() {
       addEntireTodo(title, completed = false) {
         this.$store.dispatch('addEntireTodo', {
           title,
-          completed,
+          completed
         })
       },
 
@@ -343,19 +313,17 @@ function appStart() {
         setTimeout(() => {
           this.$store.dispatch('sortTodos')
         }, delay)
-      },
-    },
+      }
+    }
   })
 
   // use the Router from the vendor/director.js library
   ;(function (app, Router) {
     'use strict'
 
-    var router = new Router()
+    let router = new Router()
 
-    ;['all', 'active', 'completed'].forEach(function (
-      visibility,
-    ) {
+    ;['all', 'active', 'completed'].forEach(function (visibility) {
       router.on(visibility, function () {
         app.visibility = visibility
       })
@@ -365,7 +333,7 @@ function appStart() {
       notfound: function () {
         window.location.hash = ''
         app.visibility = 'all'
-      },
+      }
     })
 
     router.init()
