@@ -20,16 +20,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized"
   },
   "keywords": [],
   "author": "Valentin Lutchanka",
   "license": "MIT",
   "private": true,
   "bugs": {
-    "url": ""
+    "url": "https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized"
   },
-  "homepage": "",
+  "homepage": "https://todo-deployment-pipeline.onrender.com",
   "devDependencies": {
     "@playwright/test": "1.32.3",
     "allure-commandline": "^2.21.0",

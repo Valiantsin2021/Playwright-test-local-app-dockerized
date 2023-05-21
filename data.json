@@ -1,14 +1,3 @@
 {
-  "todos": [
-    {
-      "title": "buy some cheese",
-      "completed": false,
-      "id": "4129585120"
-    },
-    {
-      "title": "book a doctors appointment",
-      "completed": false,
-      "id": "9006861403"
-    }
-  ]
+  "todos": []
 }
