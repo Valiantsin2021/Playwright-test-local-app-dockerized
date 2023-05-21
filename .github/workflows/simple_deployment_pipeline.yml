@@ -44,7 +44,7 @@ jobs:
           retry-all: false # Optional, defaults to "false"
   Tag_release:
     needs: [Deployment_to_Render]
-    if: ${{ github.event_name == 'push' && !contains(join(toJSon(github.event.commits.*.message)), 'skip') }}    
+    if: ${{ github.event_name == 'push' && !contains(join(toJSon(github.event.commits.*.message)), 'skip') }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -64,21 +64,20 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         if: success()
         with:
-            severity: info
-            details: Test Succeeded!
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          details: Test Succeeded!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
-            severity: error
-            details: Test Failed!
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: error
+          details: Test Failed!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Cancelled
         uses: rjstone/discord-webhook-notify@v1
         if: cancelled()
         with:
-            severity: warn
-            details: Test Cancelled!
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-        
+          severity: warn
+          details: Test Cancelled!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}

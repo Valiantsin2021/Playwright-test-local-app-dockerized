@@ -4,11 +4,11 @@ on:
     branches:
       - master
   schedule:
-    - cron:  '30 5,17 * * *'
+    - cron: '30 5,17 * * *'
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: github context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -30,4 +30,3 @@ jobs:
           max-attempts: 3 # Optional, defaults to 1
           retry-delay: 5s # Optional, only applicable to max-attempts > 1
           retry-all: false # Optional, defaults to "false"
- 
