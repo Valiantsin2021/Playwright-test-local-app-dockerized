@@ -1,16 +1,17 @@
 // @ts-check
+export {}
 const { test, expect } = require('@playwright/test')
 
 test.beforeEach(async ({ page }) => {
   await page.goto('./')
 })
 
-const TODO_ITEMS = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
+const TODO_ITEMS: string[] = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
 
 test.describe('New Todo via requests', () => {
   test('should allow me to add todo itemsvia API', async ({ page, request }) => {
     await page.goto('http://localhost:3000/')
-    for (let todo of TODO_ITEMS) {
+    for (const todo of TODO_ITEMS) {
       await request.post('http://localhost:3000/todos', {
         data: {
           title: todo,

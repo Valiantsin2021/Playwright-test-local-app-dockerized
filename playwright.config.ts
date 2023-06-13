@@ -1,7 +1,7 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test')
+import { PlaywrightTestConfig, devices } from '@playwright/test'
 // require('dotenv').config();
-module.exports = defineConfig({
+const config: PlaywrightTestConfig = {
   testDir: './tests',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
@@ -36,4 +36,5 @@ module.exports = defineConfig({
     url: 'http://localhost:3000/',
     reuseExistingServer: !process.env.CI
   }
-})
+}
+export default config

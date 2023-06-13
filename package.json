@@ -9,12 +9,14 @@
     "start": "node ./server",
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
-    "test": "npx playwright test",
-    "lint": "eslint ./**/*.{js,jsx} --fix",
+    "test": "npm run code:check && npm run lint && npx playwright test",
+    "lint": "npx eslint ./tests/*.{js,jsx,ts,tsx} --fix",
     "format": "prettier --write .",
-    "posttest": "allure generate allure-results -o allure-report --clean"
+    "posttest": "allure generate allure-results -o allure-report --clean",
+    "code:check": "tsc --noEmit"
   },
   "precommit": [
+    "code:check",
     "format",
     "lint"
   ],
@@ -32,15 +34,18 @@
   "homepage": "https://todo-deployment-pipeline.onrender.com",
   "devDependencies": {
     "@playwright/test": "1.32.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
     "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
-    "playwright": "^1.33.0",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-playwright": "^0.12.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "playwright": "^1.33.0",
     "pre-commit": "^1.2.2",
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
   },
   "dependencies": {
     "json-server": "0.17.1",
