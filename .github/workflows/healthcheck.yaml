@@ -4,7 +4,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '30 5,17 * * *'
+    - cron: '0 19 * * 1'
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
