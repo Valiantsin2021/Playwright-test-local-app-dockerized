@@ -1,6 +1,12 @@
 module.exports = {
-  extends: ['plugin:prettier/recommended', 'plugin:playwright/playwright-test'],
-  plugins: ['prettier', 'playwright'],
+  extends: [
+    'plugin:prettier/recommended',
+    'plugin:playwright/playwright-test',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  plugins: ['playwright', '@typescript-eslint', 'prettier'],
+  parser: '@typescript-eslint/parser',
+  root: true,
   env: {
     browser: true,
     es6: true,
@@ -20,6 +26,7 @@ module.exports = {
         tabWidth: 2
       }
     ],
+    '@typescript-eslint/no-var-requires': 'warn',
     'no-console': 'off',
     'no-useless-escape': 'off',
     'no-eval': 'error',
