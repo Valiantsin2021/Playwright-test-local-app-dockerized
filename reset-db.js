@@ -1,11 +1,11 @@
-const write = require('fs').writeFileSync
+import * as write from 'fs'
 
 const resetDatabase = () => {
   const data = {
     todos: []
   }
   const str = JSON.stringify(data, null, 2) + '\n'
-  write('./data.json', str)
+  write.writeFileSync('./data.json', str)
 }
 
 resetDatabase()

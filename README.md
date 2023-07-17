@@ -10,7 +10,7 @@ To setup:
 
 ### run without the image build
 
-4.  `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.33.0-focal npm t`
+4.  `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.36.1-jammy npm t`
 
 ## Small print
 

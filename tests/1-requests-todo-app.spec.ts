@@ -1,9 +1,9 @@
 // @ts-check
 export {}
-const { test, expect } = require('@playwright/test')
+import { test, expect } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('./')
+  await page.goto('/')
 })
 
 const TODO_ITEMS: string[] = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
