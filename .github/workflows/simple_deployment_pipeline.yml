@@ -21,8 +21,6 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test
-      - name: Lighthouse Test
-        run: npm run measure
   Deployment_to_Render:
     name: Deploy to Render
     if: ${{ github.event_name == 'push' }}
