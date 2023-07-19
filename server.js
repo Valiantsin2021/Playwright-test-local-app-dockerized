@@ -1,5 +1,5 @@
-const jsonServer = require('json-server')
-const jsonReset = require('json-server-reset')
+import jsonServer from 'json-server'
+import jsonReset from 'json-server-reset'
 
 const server = jsonServer.create()
 const router = jsonServer.router('data.json')

@@ -1,12 +1,10 @@
-FROM mcr.microsoft.com/playwright:v1.32.3-focal
+FROM mcr.microsoft.com/playwright:v1.36.1-jammy
 RUN apt-get purge -y --auto-remove python3.8
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get -y install default-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN apt-get update && \
-    apt-get install zip
 WORKDIR /app
 COPY package.json /app/package.json
 RUN npm install

@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.32.3-focal
+FROM mcr.microsoft.com/playwright:v1.36.1-jammy
 RUN apt-get purge -y --auto-remove python3.8
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \

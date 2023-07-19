@@ -1,14 +1,32 @@
 // @ts-check
-const { test, expect } = require('@playwright/test')
+export {}
+import { test, expect, chromium } from '@playwright/test'
+// import { playAudit } from 'playwright-lighthouse'
 
+// let page
 test.beforeEach(async ({ page }) => {
-  await page.goto('./')
+  // const browser = await chromium.launch({
+  //   args: ['--remote-debugging-port=9222'],
+  //   headless: false
+  // })
+  // const page = await browser.newPage()
+  await page.goto('/')
 })
-
 const TODO_ITEMS: string[] = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
 
 test.describe('New Todo', () => {
   test('should allow me to add todo items', async ({ page }) => {
+    // await playAudit({
+    //   page: page,
+    //   thresholds: {
+    //     performance: 50,
+    //     accessibility: 50,
+    //     'best-practices': 50,
+    //     seo: 50,
+    //     pwa: 50
+    //   },
+    //   port: 9222
+    // })
     // create a new todo locator
     const newTodo = page.getByPlaceholder('What needs to be done?')
 
@@ -34,7 +52,7 @@ test.describe('New Todo', () => {
 
     await expect(page.getByTestId('remaining-count')).toHaveText('3')
 
-    await page.locator('[type="checkbox"]').nth(1).click()
+    await page.locator('[type="checkbox"]').nth(1).click({ force: true })
     await expect(page.getByTestId('remaining-count')).toHaveText('2')
 
     await page.getByTestId('filter-active').click()

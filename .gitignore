@@ -5,3 +5,5 @@ cypress/videos/
 /playwright/.cache/
 allure-report
 allure-results
+lighthouse-results.report.html
+lighthouse-results.report.csv

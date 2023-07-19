@@ -1,0 +1,15 @@
+[
+  {
+    "path": "/",
+    "timings": [
+      {
+        "metric": "first-contentful-paint",
+        "budget": 100
+      },
+      {
+        "metric": "speed-index",
+        "budget": 200
+      }
+    ]
+  }
+]
