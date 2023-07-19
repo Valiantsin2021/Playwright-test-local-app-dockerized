@@ -1,0 +1,5 @@
+[
+  { title: 'buy some cheese', completed: false, id: 1 },
+  { title: 'feed the cat', completed: false, id: 2 },
+  { title: 'book a doctors appointment', completed: false, id: 3 }
+]
