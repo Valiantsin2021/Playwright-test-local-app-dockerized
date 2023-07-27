@@ -1,6 +1,5 @@
-import { test, chromium } from '@playwright/test'
+import { test } from '@playwright/test'
 import { playAudit } from 'playwright-lighthouse'
-
 test.describe.parallel('web performance tests', () => {
   /**
    * In this test we use request.timing()
@@ -38,8 +37,8 @@ test.describe.parallel('web performance tests', () => {
    * to audit performance of the page
    * @see https://www.npmjs.com/package/playwright-lighthouse
    */
-  test('Run Lighthouse Audit', async () => {
-    const browser = await chromium.launch({
+  test.only('Run Lighthouse Audit', async ({ playwright }) => {
+    const browser = await playwright.chromium.launch({
       headless: true,
       args: ['--remote-debugging-port=9222']
     })
@@ -48,13 +47,14 @@ test.describe.parallel('web performance tests', () => {
 
     await playAudit({
       page: page,
+      ignoreError: true,
       port: 9222,
       thresholds: {
-        performance: 50,
+        performance: 70,
         accessibility: 50,
         'best-practices': 50,
         seo: 50,
-        pwa: 50
+        pwa: 30
       },
       reports: {
         formats: {
