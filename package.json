@@ -14,7 +14,7 @@
     "reset": "node reset-db.js",
     "test": "npm run code:check && npm run lint && npx playwright test",
     "lint": "npx eslint ./tests/*.{js,jsx,ts,tsx} --fix",
-    "format": "prettier --write .",
+    "format": "prettier --write ./tests/*.ts",
     "posttest": "allure generate allure-results -o allure-report --clean",
     "code:check": "tsc --noEmit"
   },
