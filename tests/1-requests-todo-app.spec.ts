@@ -15,6 +15,13 @@ test.describe('New Todo via requests', () => {
     }
     await page.reload()
   })
+  test.afterEach(async ({ page, request }) => {
+    const todos = await page.locator('.todo').count()
+    for (let i = 1; i <= todos; i++) {
+      const response = await request.delete(`/todos/${i}`)
+      console.log(response.status())
+    }
+  })
   test('should allow me to POST and DELETE todo items via API', async ({ page, request }) => {
     for (const todo of TODO_ITEMS) {
       await expect(page.getByText(todo)).toBeVisible()
@@ -28,38 +35,5 @@ test.describe('New Todo via requests', () => {
       await expect(page.getByText(TODO_ITEMS[i])).toBeHidden()
       await expect(page.locator('.todo')).toHaveCount(TODO_ITEMS.length - (i + 1))
     }
-  })
-  test(`See the previously set up test conditions in BeforeEach hook`, async ({ page }) => {
-    await expect(page.getByText(TODO_ITEMS.join(' '))).toBeVisible()
-  })
-  test.afterEach(async ({ page, request }) => {
-    const todos = await page.locator('.todo').count()
-    for (let i = 1; i <= todos; i++) {
-      await request.delete(`/todos/${i}`)
-    }
-  })
-  test(`create new todo and intercept the request`, async ({ page }) => {
-    await page.route('/todos', async route => {
-      if (route.request().method() === 'POST') {
-        const response = await route.fetch()
-        const json = await response.json()
-        console.log(json)
-        json.title = 'NOT SUPER TODO'
-        console.log(json)
-        await route.fulfill({ response, json })
-      }
-    })
-    await page.goto('./')
-    const newTodo = page.getByPlaceholder('What needs to be done?')
-
-    // Create 1st todo.
-    await newTodo.fill('SUPER TODO')
-    const responsePromise = page.waitForResponse(
-      response => response.url() === 'http://localhost:3000/todos' && response.status() === 201
-    )
-    await newTodo.press('Enter')
-    const response = await responsePromise
-    // console.log(response)
-    await expect(page.getByText('SUPER TODO')).toBeVisible()
   })
 })

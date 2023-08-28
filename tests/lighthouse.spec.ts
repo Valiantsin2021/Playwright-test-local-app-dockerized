@@ -37,7 +37,7 @@ test.describe.parallel('web performance tests', () => {
    * to audit performance of the page
    * @see https://www.npmjs.com/package/playwright-lighthouse
    */
-  test.only('Run Lighthouse Audit', async ({ playwright }) => {
+  test('Run Lighthouse Audit', async ({ playwright }) => {
     const browser = await playwright.chromium.launch({
       headless: true,
       args: ['--remote-debugging-port=9222']
@@ -67,9 +67,8 @@ test.describe.parallel('web performance tests', () => {
 
     await browser.close()
   })
-  test(`requests`, async ({ request, browser }) => {
-    const response = await request.get('https://play.google.com')
-    // console.log(response.ok(), await response.text())
-    console.log(browser.browserType())
+  test(`requests`, async ({ browser }, testInfo) => {
+    // console.log(browser.browserType())
+    console.log(testInfo.config)
   })
 })

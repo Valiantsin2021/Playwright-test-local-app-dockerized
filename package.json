@@ -8,7 +8,7 @@
     "update": "npm install -D npm-check-updates && npx npm-check-updates -u",
     "prestart": "npm run reset",
     "start": "node ./server",
-    "performance": "npx lighthouse http://localhost:3000/ --budget-path=budget.json --output html,csv --output-path=./lighthouse-results.html --preset=desktop --only-categories=performance --max-wait-for-load=6000 --skip-audits --no-enable-error-reporting",
+    "performance": "npx lighthouse http://localhost:3000/ --budget-path=budget.json --output html,csv --output-path=./lighthouse/lighthouse-results.html --preset=desktop --only-categories=performance --max-wait-for-load=6000 --skip-audits --no-enable-error-reporting",
     "measure": "start-test 3000 performance",
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
