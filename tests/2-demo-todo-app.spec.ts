@@ -9,6 +9,14 @@ const TODO_ITEMS: string[] = ['buy some cheese', 'feed the cat', 'book a doctors
 test.describe('New Todo', () => {
   test('should allow me to add todo items', async ({ page }) => {
     const newTodo = page.getByPlaceholder('What needs to be done?')
+    async function checkOverflow(selector) {
+      const overflow = await page.evaluate(selector => {
+        const element = document.querySelector(selector)
+        return element.clientHeight === element.scrollHeight && element.clientWidth === element.scrollWidth
+      }, selector)
+      expect(overflow, 'does overflow').toBe(true)
+    }
+    await checkOverflow('.new-todo')
 
     // Create 1st todo.
     await newTodo.fill(TODO_ITEMS[0])
