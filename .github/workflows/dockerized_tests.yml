@@ -2,7 +2,7 @@ name: Test local app in a docker container (Playwright)
 on:
   push:
     branches:
-      - master
+      - dev
   pull_request:
     branches: [master]
     types: [opened, synchronize]

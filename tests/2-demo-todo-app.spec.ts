@@ -1,34 +1,22 @@
 // @ts-check
-export {}
-import { test, expect, chromium } from '@playwright/test'
-// import { playAudit } from 'playwright-lighthouse'
+import { test, expect } from '@playwright/test'
 
-// let page
 test.beforeEach(async ({ page }) => {
-  // const browser = await chromium.launch({
-  //   args: ['--remote-debugging-port=9222'],
-  //   headless: false
-  // })
-  // const page = await browser.newPage()
   await page.goto('/')
 })
 const TODO_ITEMS: string[] = ['buy some cheese', 'feed the cat', 'book a doctors appointment']
 
 test.describe('New Todo', () => {
   test('should allow me to add todo items', async ({ page }) => {
-    // await playAudit({
-    //   page: page,
-    //   thresholds: {
-    //     performance: 50,
-    //     accessibility: 50,
-    //     'best-practices': 50,
-    //     seo: 50,
-    //     pwa: 50
-    //   },
-    //   port: 9222
-    // })
-    // create a new todo locator
     const newTodo = page.getByPlaceholder('What needs to be done?')
+    async function checkOverflow(selector) {
+      const overflow = await page.evaluate(selector => {
+        const element = document.querySelector(selector)
+        return element.clientHeight === element.scrollHeight && element.clientWidth === element.scrollWidth
+      }, selector)
+      expect(overflow, 'does overflow').toBe(true)
+    }
+    await checkOverflow('.new-todo')
 
     // Create 1st todo.
     await newTodo.fill(TODO_ITEMS[0])

@@ -8,13 +8,13 @@
     "update": "npm install -D npm-check-updates && npx npm-check-updates -u",
     "prestart": "npm run reset",
     "start": "node ./server",
-    "performance": "npx lighthouse http://localhost:3000/ --budget-path=budget.json --output html,csv --output-path=./lighthouse-results.html --preset=desktop --only-categories=performance --max-wait-for-load=6000 --skip-audits --no-enable-error-reporting",
+    "performance": "npx lighthouse http://localhost:3000/ --budget-path=budget.json --output html,csv --output-path=./lighthouse/lighthouse-results.html --preset=desktop --only-categories=performance --max-wait-for-load=6000 --skip-audits --no-enable-error-reporting",
     "measure": "start-test 3000 performance",
     "poststart": "npm run reset",
     "reset": "node reset-db.js",
     "test": "npm run code:check && npm run lint && npx playwright test",
     "lint": "npx eslint ./tests/*.{js,jsx,ts,tsx} --fix",
-    "format": "prettier --write .",
+    "format": "prettier --write ./tests/*.ts",
     "posttest": "allure generate allure-results -o allure-report --clean",
     "code:check": "tsc --noEmit"
   },
@@ -36,7 +36,7 @@
   },
   "homepage": "https://todo-deployment-pipeline.onrender.com",
   "devDependencies": {
-    "@playwright/test": "1.36.1",
+    "@playwright/test": "1.38.1",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "allure-commandline": "^2.21.0",
@@ -45,7 +45,6 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-playwright": "0.15.3",
     "eslint-plugin-prettier": "5.0.0",
-    "lighthouse": "^10.4.0",
     "playwright-lighthouse": "^3.1.0",
     "pre-commit": "^1.2.2",
     "prettier": "3.0.0",
@@ -54,6 +53,7 @@
   },
   "dependencies": {
     "json-server": "0.17.1",
-    "json-server-reset": "1.4.0"
+    "json-server-reset": "1.4.0",
+    "lighthouse": "^10.4.0"
   }
 }
