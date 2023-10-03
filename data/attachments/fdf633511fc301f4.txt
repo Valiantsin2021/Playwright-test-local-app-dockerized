@@ -1,0 +1,69 @@
+<ref *1> {
+  configFile: '/app/playwright.config.ts',
+  rootDir: '/app/tests',
+  forbidOnly: false,
+  fullyParallel: false,
+  globalSetup: null,
+  globalTeardown: null,
+  globalTimeout: 0,
+  grep: /.*/,
+  grepInvert: null,
+  maxFailures: 0,
+  metadata: {},
+  preserveOutput: 'always',
+  reporter: [
+    [ 'list', undefined ],
+    [ 'html', [Object] ],
+    [ '/app/node_modules/allure-playwright/dist/index.js', [Object] ]
+  ],
+  reportSlowTests: { max: 5, threshold: 15000 },
+  quiet: false,
+  projects: [
+    {
+      grep: /.*/,
+      grepInvert: null,
+      outputDir: '/app/test-results',
+      repeatEach: 1,
+      retries: 0,
+      metadata: undefined,
+      name: 'Test todo app',
+      testDir: '/app/tests',
+      snapshotDir: '/app/tests',
+      testIgnore: [],
+      testMatch: '**/*.@(spec|test).?(c|m)[jt]s?(x)',
+      timeout: 30000,
+      use: [Object],
+      dependencies: [],
+      teardown: undefined,
+      __projectId: 'Test todo app'
+    }
+  ],
+  shard: null,
+  updateSnapshots: 'missing',
+  version: '1.38.1',
+  workers: 1,
+  webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:3000/',
+    reuseExistingServer: true
+  },
+  [Symbol(configInternalSymbol)]: FullConfigInternal {
+    config: [Circular *1],
+    globalOutputDir: '/app',
+    configDir: '/app',
+    configCLIOverrides: {},
+    storeDir: '/app/playwright',
+    ignoreSnapshots: false,
+    webServers: [ [Object] ],
+    plugins: [],
+    projects: [ [FullProjectInternal] ],
+    cliArgs: [],
+    cliGrep: undefined,
+    cliGrepInvert: undefined,
+    cliProjectFilter: undefined,
+    cliListOnly: false,
+    cliPassWithNoTests: undefined,
+    testIdMatcher: undefined,
+    defineConfigWasUsed: false
+  }
+}
