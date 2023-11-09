@@ -1,16 +1,40 @@
-# test-todomvc-using-playwright-docker
+# JS automation tests using Playwright <a href="https://playwright.dev/" target="blank"><img align="center" src="https://playwright.dev/img/playwright-logo.svg" alt="WebdriverIO" height="40" width="40" /></a> 
 
-### You can use either Dockerfile_playwright_official_java file to build the common image or build minified image with Dockerfile_minified_ub_node file
+## Author
 
-To setup:
+- [@Valiantsin2021](https://www.github.com/Valiantsin2021) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-1.  `npm i`
-2.  `docker build -t <desired image name> .`
-3.  `docker run -it --rm --name <desired container name> -v ./allure-report:/app/allure-report -p 3000:3000 <docker image name from previous step> npm test`
+## Repository Overview
 
-### run without the image build
+This repository provides an example of the complete deployment pipeline of the "Todo App". Includes:
 
-4.  `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.36.1-jammy npm t`
+### 1. Static code checks, linting and formatting
+
+### 2. API and UI tests of the application with the Playwright
+
+### 3. Performance test with Loghthouse
+
+### 4. Github actions workflows for the build and test in a Docker container, deployment pipeline to Render.io and Health check pipeline
+
+
+
+## Setup
+
+1. Clone this repository or unzip the downloaded file.
+2. Install dependencies with `npm install`.
+3. Run tests using the following commands:
+   - `docker build -t <desired image name> .`
+   - `docker run -it --rm --name <desired container name> -v ./allure-report:/app/allure-report -p 3000:3000 <docker image name from previous step> npm test`
+   - `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.36.1-jammy npm t`
+   - `npm run test` to run the test file.
+   - `npm run posttest` to create an Allure report.
+   - `npm run reset` to reset the database of the app
+
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://valiantsin2021.github.io/Portfolio/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/valiantsin-lutchanka/)
 
 ## Small print
 
