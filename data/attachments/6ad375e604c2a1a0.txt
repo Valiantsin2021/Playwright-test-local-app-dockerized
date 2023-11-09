@@ -1,0 +1,11 @@
+{
+  startTime: 1699529343955.128,
+  domainLookupStart: 0.262,
+  domainLookupEnd: 54.453,
+  connectStart: 54.453,
+  secureConnectionStart: 56.245,
+  connectEnd: 81.874,
+  requestStart: 82.159,
+  responseStart: 197.199,
+  responseEnd: 199.547
+}
