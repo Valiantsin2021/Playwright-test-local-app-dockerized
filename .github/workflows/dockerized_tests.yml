@@ -1,4 +1,5 @@
 name: Test local app in a docker container (Playwright)
+run-name: Deploy to ${{ github.event.client_payload.sut }} trigger via >${{ github.event_name }}< by @${{ github.actor }}
 on:
   push:
     branches:
