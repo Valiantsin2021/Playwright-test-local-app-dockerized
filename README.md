@@ -1,5 +1,6 @@
-# JS automation tests using Playwright <a href="https://playwright.dev/" target="blank"><img align="center" src="https://playwright.dev/img/playwright-logo.svg" alt="WebdriverIO" height="40" width="40" /></a> 
+# Complete deployment pipeline of Todo App with using Playwright <a href="https://playwright.dev/" target="blank"><img align="center" src="https://playwright.dev/img/playwright-logo.svg" alt="WebdriverIO" height="40" width="40" /></a> 
 
+[![Deployment pipeline](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/simple_deployment_pipeline.yml/badge.svg)](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/simple_deployment_pipeline.yml) [![Test example application](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/healthcheck.yml/badge.svg)](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/healthcheck.yml) [![Test local app in a docker container (Playwright)](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/dockerized_tests.yml/badge.svg)](https://github.com/Valiantsin2021/Playwright-test-local-app-dockerized/actions/workflows/dockerized_tests.yml)
 ## Author
 
 - [@Valiantsin2021](https://www.github.com/Valiantsin2021) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
