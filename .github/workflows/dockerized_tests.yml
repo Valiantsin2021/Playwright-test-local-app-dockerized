@@ -20,7 +20,7 @@ jobs:
         run: docker build -t test-image:latest -f Dockerfile .
       # run application Docker image
       - name: Run tests in a container (application)
-        run: docker run -i --rm --name test -v $PWD:/app -w /app -p 3000:3000 test-image:latest npm test
+        run: docker run -i --rm --name test -v $PWD:/app -w /app -p 3000:3000 test-image:latest npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
