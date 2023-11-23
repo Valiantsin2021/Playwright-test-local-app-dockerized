@@ -11,5 +11,8 @@
     "paths": {
       "@myhelper/*": ["utils/*"] // This mapping is relative to "baseUrl".
     }
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

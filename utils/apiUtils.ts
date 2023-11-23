@@ -70,7 +70,7 @@ export default class API {
       headers: token ? { Cookie: `token=${token}` } : {},
       data: reqBody ? reqBody : undefined
     })
-    API.logResponse(res.status(), res.json())
+    res.json() ? API.logResponse(res.status(), res.json()) : API.logResponse(res.status(), res.text())
     return res
   }
   async postReq(endpoint: string, reqBody: object) {
@@ -81,15 +81,15 @@ export default class API {
     return this.makeRequest(endpoint, 'get')
   }
 
-  async putReq(endpoint: string, reqBody: object, token: string) {
+  async putReq(endpoint: string, reqBody: object, token: string = null) {
     return this.makeRequest(endpoint, 'put', reqBody, token)
   }
 
-  async patchReq(endpoint: string, reqBody: object, token: string) {
+  async patchReq(endpoint: string, reqBody: object, token: string = null) {
     return this.makeRequest(endpoint, 'patch', reqBody, token)
   }
 
-  async deleteReq(endpoint: string, token: string) {
-    return this.makeRequest(endpoint, 'delete', undefined, token ?? undefined)
+  async deleteReq(endpoint: string, token: string = null) {
+    return this.makeRequest(endpoint, 'delete', undefined, token)
   }
 }
