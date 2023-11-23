@@ -1,6 +1,6 @@
 <ref *1> {
-  configFile: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\playwright.config.ts',
-  rootDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\tests',
+  configFile: '/app/playwright.config.ts',
+  rootDir: '/app/tests',
   forbidOnly: false,
   fullyParallel: false,
   globalSetup: null,
@@ -14,10 +14,7 @@
   reporter: [
     [ 'list', undefined ],
     [ 'html', [Object] ],
-    [
-      'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\node_modules\\allure-playwright\\dist\\index.js',
-      [Object]
-    ]
+    [ '/app/node_modules/allure-playwright/dist/index.js', [Object] ]
   ],
   reportSlowTests: { max: 5, threshold: 15000 },
   quiet: false,
@@ -25,13 +22,13 @@
     {
       grep: /.*/,
       grepInvert: null,
-      outputDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\test-results',
+      outputDir: '/app/test-results',
       repeatEach: 1,
       retries: 0,
       metadata: undefined,
       name: 'Test todo app',
-      testDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\tests',
-      snapshotDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\tests',
+      testDir: '/app/tests',
+      snapshotDir: '/app/tests',
       testIgnore: [],
       testMatch: '**/*.@(spec|test).?(c|m)[jt]s?(x)',
       timeout: 30000,
@@ -52,10 +49,10 @@
   },
   [Symbol(configInternalSymbol)]: FullConfigInternal {
     config: [Circular *1],
-    globalOutputDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc',
-    configDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc',
+    globalOutputDir: '/app',
+    configDir: '/app',
     configCLIOverrides: {},
-    storeDir: 'C:\\Users\\I39146\\OneDrive - Verisk Analytics\\Desktop\\Mentoring\\test-todomvc\\playwright',
+    storeDir: '/app/playwright',
     ignoreSnapshots: false,
     webServers: [ [Object] ],
     plugins: [],
