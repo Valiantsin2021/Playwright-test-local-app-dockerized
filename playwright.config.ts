@@ -27,7 +27,7 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'Test todo app',
-      use: { ...devices['Desktop Chrome'] }
+      use: { ...devices['Desktop Chrome'], ignoreHTTPSErrors: true }
     }
   ],
   webServer: {
