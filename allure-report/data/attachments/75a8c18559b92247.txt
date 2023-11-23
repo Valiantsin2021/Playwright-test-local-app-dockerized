@@ -1,0 +1,117 @@
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos
+Request data: 
+
+{ title: 'buy some cheese', completed: false }
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+201
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos
+Request data: 
+
+{ title: 'feed the cat', completed: false }
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+201
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos
+Request data: 
+
+{ title: 'book a doctors appointment', completed: false }
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+201
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos
+Request data: 
+
+null
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+200
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+[
+  { title: 'buy some cheese', completed: false, id: 1 },
+  { title: 'feed the cat', completed: false, id: 2 },
+  { title: 'book a doctors appointment', completed: false, id: 3 }
+]
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos/1
+Request data: 
+
+null
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+200
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos/2
+Request data: 
+
+null
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+200
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<
+Request URL: 
+/todos/3
+Request data: 
+
+null
+<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<
+
+<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<
+Response status: 
+200
+Response data: 
+
+{}
+<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<
