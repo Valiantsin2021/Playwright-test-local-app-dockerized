@@ -67,7 +67,7 @@ test.describe.parallel('web performance tests', () => {
 
     await browser.close()
   })
-  test(`requests`, async ({ browser }, testInfo) => {
+  test(`requests`, async ({}, testInfo) => {
     // console.log(browser.browserType())
     console.log(testInfo.config)
   })

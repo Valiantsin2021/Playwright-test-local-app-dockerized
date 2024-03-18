@@ -26,7 +26,7 @@ This repository provides an example of the complete deployment pipeline of the "
 3. Run tests using the following commands:
    - `docker build -t <desired image name> .`
    - `docker run -it --rm --name <desired container name> -v ./allure-report:/app/allure-report -p 3000:3000 <docker image name from previous step> npm test`
-   - `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.36.1-jammy npm t`
+   - `docker run -it --rm --name direct -v ${pwd}:/app -w /app -p 3000:3000 mcr.microsoft.com/playwright:v1.42.1-jammy npm t`
    - `npm run test` to run the test file.
    - `npm run posttest` to create an Allure report.
    - `npm run reset` to reset the database of the app
