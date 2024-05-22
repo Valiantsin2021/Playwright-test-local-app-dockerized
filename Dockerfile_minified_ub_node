@@ -2,7 +2,7 @@ FROM ubuntu:jammy
 RUN apt-get update -y && \
     apt-get install -y curl && \
     # Add nodejs to repo
-    curl -sL https://deb.nodesource.com/setup_18.x | bash - && \ 
+    curl -sL https://deb.nodesource.com/setup_22.x | bash - && \ 
     # Cleanup packages and update the repos
     apt-get remove -y --purge cmdtest && \
     apt-get update && \
