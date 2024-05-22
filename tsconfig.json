@@ -10,7 +10,8 @@
     "baseUrl": "./", // This must be specified if "paths" is.
     "paths": {
       "@myhelper/*": ["utils/*"] // This mapping is relative to "baseUrl".
-    }
+    },
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules"
